@@ -1,0 +1,11 @@
+﻿import microbit
+from microbit import uart
+
+while(True):
+    if(uart.any()):
+        input = uart.read(1)
+        print("Got " + str(input))
+        if(chr(input[0]) == '1'): light = 9
+        else: light = 0
+        microbit.display.on()
+        microbit.display.set_pixel(3,3,light)
